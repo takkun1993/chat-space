@@ -4,8 +4,10 @@
       .side-bar__user-name__top-items__name
         masa
       .side-bar__user-name__top-items__icons
-        = icon('far', 'edit', class:'side-bar__user-name__top-items__icons__edit')
-        = icon('fas', 'cog', class:'side-bar__user-name__top-items__icons__cog')
+        = link_to '#' do
+          = icon('far', 'edit', class:'side-bar__user-name__top-items__icons__edit')
+        = link_to '#' do
+          = icon('fas', 'cog', class:'side-bar__user-name__top-items__icons__cog')
   
   .side-bar__group-list
     .side-bar__group-list__Group
