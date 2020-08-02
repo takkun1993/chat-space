@@ -1,0 +1,25 @@
+.chat-main
+  .chat-main__group-info
+    .chat-main__group-info__group
+      .chat-main__group-info__group__group-name
+        test
+      .chat-main__group-info__group__member
+        Member:masa
+    .chat-main__group-info__edit-btn
+      Edit
+  .chat-main__message-list
+    .chat-main__message-list__info
+      .chat-main__message-list__info__member
+        masa
+      .chat-main__message-list__info__create-at
+        2019/11/20 17:43:01
+    .chat-main__message-list__messages
+      おはよう
+
+  .chat-main__message-form
+    %form.chat-main__message-form__contents
+      %input.chat-main__message-form__contents__message{"placeholder": "type a message", "type": "text"}
+      %label.chat-main__message-form__contents__photo
+        = icon('far', 'image', class: 'Form__icon')
+        %input.Hidden{type: 'file'}
+    %input.chat-main__message-form__send{type: 'submit', value: 'Send'}    
