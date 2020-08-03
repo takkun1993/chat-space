@@ -4,15 +4,16 @@
       .side-bar__user-name__top-items__name
         = current_user.name
       .side-bar__user-name__top-items__icons
-        = link_to '#' do
+        = link_to new_group_path(current_user) do
           = icon('far', 'edit', class:'side-bar__user-name__top-items__icons__edit')
         = link_to edit_user_path(current_user) do
           = icon('fas', 'cog', class:'side-bar__user-name__top-items__icons__cog')
   
   .side-bar__group-list
+    - current_user.groups.each do |group|
     .side-bar__group-list__Group
       = link_to '#' do
         .side-bar__group-list__Group__Group__name
-          グループ名
+          = group.name
         .side-bar__group-list__Group__Group__message
-          最新のメッセージ
+          メッセージはまだありません
