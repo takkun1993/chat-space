@@ -2,25 +2,23 @@
   .chat-main__group-info
     .chat-main__group-info__group
       .chat-main__group-info__group__group-name
-        test
+        = @group.name
       .chat-main__group-info__group__member
-        Member:masa
+        Member:
+        - @group.users.each do |user|
+          = user.name
     .chat-main__group-info__edit-btn
-      = link_to '#' do
+      = link_to edit_group_path(@group) do
         Edit
+
   .chat-main__message-list
-    .chat-main__message-list__info
-      .chat-main__message-list__info__member
-        masa
-      .chat-main__message-list__info__create-at
-        2019/11/20 17:43:01
-    .chat-main__message-list__messages
-      おはよう
+    = render @messages
 
   .chat-main__message-form
-    %form.chat-main__message-form__contents
-      %input.chat-main__message-form__contents__message{"placeholder": "type a message", "type": "text"}
-      %label.chat-main__message-form__contents__photo
-        = icon('far', 'image', class: 'Form__icon')
-        %input.Hidden{type: 'file'}
-    %input.chat-main__message-form__send{type: 'submit', value: 'Send'}    
+    = form_with model: [@group, @message], html: {class: "chat-main__message-form"}, local: true do |f|
+      .chat-main__message-form__contents
+        = f.text_field :content, class: 'chat-main__message-form__contents__message', placeholder: 'type a message'
+        = f.label :image, class: 'chat-main__message-form__contents__photo' do
+          = icon('far', 'image', class: 'fa-image')
+          = f.file_field :image, class: 'Hidden'
+      = f.submit 'Send', class: 'chat-main__message-form__send'
